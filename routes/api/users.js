@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const { check, validationResult } = require('express-validator');
 
+const User = require('../')
+
 //@route    POST api/users
 //@desc     Test route
 //@access   Public
@@ -14,7 +16,33 @@ router.post('/', [
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
   }
-  res.send('User route')
+
+  const { name, email, password } = req.body;
+  try {
+    // See if user exists
+    let user = await User.findOne({ email });
+    if (user) {
+      res.status(400).json({ errors: [{ msg: 'User already exists' }] })
+    }
+    // Get users gravatar
+
+  } catch (err) {
+
+  }
+
+  user = new User({
+    name,
+    email,
+    avatar,
+    password
+  });
+
+  const salt = await bcrypt.genSalt(10);
+  user.password = await bcrypt.hash(password, salt);
+  await user.save();
+
+  //return jsonwebtoken
+  res.send('User route');
 });
 
 module.exports = router;
