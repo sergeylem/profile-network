@@ -21,12 +21,12 @@ router.post('/', [auth, [
   try {
     const user = await User.findById(req.user.id).select(-password);
 
-    const newPost = {
+    const newPost = new Post({
       text: req.body.text,
       name: user.name,
       avatar: user.avatar,
       user: req.body.id
-    }
+    });
 
     const post = await newPost.save();
     res.json(post);
@@ -36,5 +36,38 @@ router.post('/', [auth, [
   }
 }
 );
+
+//@route    GET api/post
+//@desc     get all posts
+//@access   Private
+
+router.get('/', auth, async (req, res) => {
+  try {
+    const posts = await new Post.find().sort({ date: -1 });
+    res.json(posts);
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send('Server error');
+  }
+});
+
+//@route    GET api/post
+//@desc     get post by id
+//@access   Private
+
+router.get('/:id', auth, async (req, res) => {
+  try {
+    const post = await new Post.findById(req.param.id);
+    
+    if(!post) {
+      res.status(404).json({msg: 'Post not found'});
+    }
+
+    res.json(post);
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send('Server error');
+  }
+});
 
 module.exports = router;
