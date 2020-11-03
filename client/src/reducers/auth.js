@@ -4,14 +4,13 @@ import {
 } from '../actions/types';
 
 const initialState = {
-  token: localStorage.getItem();
+  token: localStorage.getItem('token'),
   isAuthenticated: null,
   loading: true,
   user: null
-
 }
 
-export default function (state = initalState, action) {
+export default function (state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
@@ -33,7 +32,5 @@ export default function (state = initalState, action) {
       }
     default:
         return state;
-
   }
-
 } 
