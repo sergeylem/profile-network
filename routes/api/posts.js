@@ -5,7 +5,7 @@ const auth = require('../../middleware/auth');
 const { collection } = require('../../models/Post');
 
 const Post = require('../../models/Post');
-const Prifile = require('../../models/Profile');
+const Profile = require('../../models/Profile');
 const User = require('../../models/User');
 
 //@route    POST api/post
