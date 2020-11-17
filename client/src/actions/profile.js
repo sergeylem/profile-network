@@ -28,7 +28,7 @@ export const getCurrentProfile = () => async dispatch => {
 
 // Get all profiles
 export const getProfiles = () => async dispatch => {
-  dispatch({'CLEAR_PROFILE'});
+  dispatch({type: 'CLEAR_PROFILE'});
 
   try {
     const res = await axios.get('/api/profile');
@@ -222,7 +222,7 @@ export const deleteEducation = id => async dispatch => {
 export const deleteAccount = () => async dispatch => {
   if (window.confirm('Are you sure to delete account?')) {
     try {
-      const res = await axios.delete('/api/profile');
+      await axios.delete('/api/profile');
 
       dispatch({ type: CLEAR_PROFILE });
       dispatch({ type: ACCOUNT_DELETED });

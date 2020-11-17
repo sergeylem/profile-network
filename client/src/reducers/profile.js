@@ -4,8 +4,7 @@ import {
   GET_REPOS,
   UPDATE_PROFILE,
   PROFILE_ERROR,
-  CLEAR_PROFILE,
-  GET_PROFILES
+  CLEAR_PROFILE
 } from '../actions/types';
 
 const initialState = {
