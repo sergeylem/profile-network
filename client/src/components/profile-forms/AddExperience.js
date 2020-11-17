@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react'
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
-import { addExperience, addEducation } from '../../actions/profile';
+// import { addExperience, addEducation } from '../../actions/profile';
 
 const AddExperience = ({ addExperience, history }) => {
 
