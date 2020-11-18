@@ -63,7 +63,7 @@ const Profile = ({
               )}
           </div>
           {profile.githubusername && (
-            <ProfileGithub />
+            <ProfileGithub username={profile.githubusername}/>
           )}
         </div>
       </Fragment>
