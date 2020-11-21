@@ -16,4 +16,5 @@ export const PROFILE_ERROR = 'PROFILE_ERROR';
 export const ACCOUNT_DELETED = 'ACCOUNT_DELETED';
 export const POST_ERROR = 'POST_ERROR';
 export const GET_POST = 'GET_POST';
+export const UPDATE_LIKES = 'UPDATE_LIKES';
 
